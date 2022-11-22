@@ -1,3 +1,5 @@
+import forge from 'node-forge';
+
 class CrescentClient {
     
     state = {
@@ -33,7 +35,8 @@ class CrescentClient {
         opts = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({d1: pubKeyPem, d5: this.state.negoState})
+            body: JSON.stringify({d1: pubKeyPem, d5: this.state.negoState}),
+            credentials: 'include'
         }
 
         const res = await fetch(path, opts);
@@ -78,7 +81,8 @@ class CrescentClient {
         opts = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({d2: d2, d5: this.state.negoState})
+            body: JSON.stringify({d2: d2, d5: this.state.negoState}),
+            credentials: 'include'
         }
 
         console.log("sending to server");
